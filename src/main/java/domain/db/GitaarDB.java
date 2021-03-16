@@ -39,16 +39,16 @@ public class GitaarDB {
         return pricedGuitar;
     }
 
-    public Gitaar getTrack(String type, String merk) {
-        for (Gitaar track : gitaarList) {
-            if (track.getType().equalsIgnoreCase(type) && track.getMerk().equalsIgnoreCase(merk))
-                return track;
+    public Gitaar getGitaar(String type, String merk) {
+        for (Gitaar gitaar : gitaarList) {
+            if (gitaar.getType().equalsIgnoreCase(type) && gitaar.getMerk().equalsIgnoreCase(merk))
+                return gitaar;
         }
 
         return null;
     }
 
-    public ArrayList<Gitaar> getTrackList() {
+    public ArrayList<Gitaar> getGitaarList() {
         return gitaarList;
     }
 }
