@@ -111,9 +111,9 @@ public class Controller extends HttpServlet {
         return "overzicht.jsp";
     }
 
-    private String deleteConfirmation(HttpServletRequest request, HttpServletResponse response){
-        String type = request.getParameter("type");
-        String merk = request.getParameter("merk");
+    private String deleteConfirmation(HttpServletRequest request, HttpServletResponse response) {
+        String type = request.getParameter("typenaam");
+        String merk = request.getParameter("merknaam");
         request.setAttribute("Print", db.getGitaar(type, merk));
         return "deleteConfirmation.jsp";
     }

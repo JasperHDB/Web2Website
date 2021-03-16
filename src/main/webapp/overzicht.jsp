@@ -44,21 +44,17 @@
             <th>Score</th>
             <th>Verwijder</th>
         </tr>
-        <%
-            for (Gitaar gitaar : gitaarLijst) {
-        %>
+        <%for (Gitaar gitaar : gitaarLijst) {%>
         <tr>
             <td><%=gitaar.getType()%></td>
             <td><%=gitaar.getMerk()%></td>
             <td>&euro;<%=gitaar.getPrijs()%></td>
             <td><%=gitaar.getScore()%></td>
             <td>
-                <a href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>">Remove</a>
+                <a href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>&merknaam=<%=gitaar.getMerk()%>">Remove</a>
             </td>
         </tr>
-        <%
-            }
-        %>
+        <%}%>
     </table>
 </main>
 
