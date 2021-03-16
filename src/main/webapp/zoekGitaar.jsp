@@ -29,7 +29,7 @@
         Zoek een gitaar op:
     </h1>
     <div class="container" style="text-align: center">
-        <form action="Controller?command=search" method="POST" novalidate>
+        <form class="zoekForm" action="Controller?command=search" method="POST" novalidate>
             <!-- Zoek op type van gitaar -->
             <label for="typenaam">Type gitaar:</label>
             <select name="type" id="typenaam">
@@ -38,7 +38,7 @@
                 <option value="akoe">Akoestische gitaar</option>
             </select>
         </form>
-        <form>
+        <form class="zoekForm">
             <!-- Zoek op merk van gitaar -->
             <label for="merknaam">Merk gitaar:</label>
             <select name="merk" id="merknaam">
@@ -51,7 +51,7 @@
                 <option value="iba">Ibanez</option>
             </select>
         </form>
-        <input type="submit" value="Search">
+        <input id="zoekSubmit" type="submit" value="Search">
     </div>
 </main>
 

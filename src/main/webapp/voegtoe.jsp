@@ -32,15 +32,15 @@
     <form action="Controller?command=voegtoe" method="POST" novalidate>
         <div class="field">
             <label for="type">Type gitaar:</label>
-            <select name="test" id="type">
+            <select name="typenaam" id="type">
                 <option value="elek">Elektrische gitaar</option>
                 <option value="klass">Klassieke gitaar</option>
                 <option value="akoe">Akoestische gitaar</option>
             </select>
         </div>
         <div class="field">
-            <label for="brand">Merk gitaar:</label>
-            <select name="test" id="brand">
+            <label for="merk">Merk gitaar:</label>
+            <select name="merknaam" id="merk">
                 <option value="fen">Fender</option>
                 <option value="gib">Gibson</option>
                 <option value="gnl">G&L</option>
@@ -55,6 +55,7 @@
             <input type="number" id="prijs" name="prijs" min="0" step="0.01">
         </div>
         <div class="score">
+            <label for="score"></label>
             <input type="range" name="score" id="score" min="0" max="5" step="1" value="0">
         </div>
         <button class="submit" type="submit">Submit</button>

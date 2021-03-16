@@ -78,7 +78,9 @@ public class Controller extends HttpServlet {
     }
 
     private String voegtoe (HttpServletRequest request, HttpServletResponse response) {
+        System.out.println(request.getParameter("typenaam"));
         String type = request.getParameter("typenaam");
+        System.out.println(request.getParameter("merknaam"));
         String merk  = request.getParameter("merknaam");
         System.out.println(request.getParameter("prijs"));
         double prijs = Double.parseDouble(request.getParameter("prijs"));
