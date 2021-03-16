@@ -82,7 +82,7 @@ public class Controller extends HttpServlet {
         String type = request.getParameter("type-naam");
         String merk  = request.getParameter("merk-naam");
         double prijs = 2; /*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH*/
-        int score = Integer.parseInt(request.getParameter("length"));
+        int score = Integer.parseInt(request.getParameter("score"));
 
         if (!type.trim().isEmpty() && !merk.trim().isEmpty() && prijs > 0) {
             Gitaar gitaar = new Gitaar(type, merk, prijs, score);

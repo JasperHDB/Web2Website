@@ -1,3 +1,7 @@
+<%@ page import="domain.model.Gitaar" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%ArrayList<Gitaar> gitaarlijst = (ArrayList<Gitaar>) request.getAttribute("gitaren");%>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -18,6 +22,7 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
             <li class="actief"><a href="overzicht.jsp">Overzicht</a></li>
+            <li><a href="zoekGitaar.jsp">Zoek</a></li>
         </ul>
     </nav>
 </header>
@@ -28,24 +33,28 @@
     </h1>
 
     <table>
-        <tr class="row1">
-            <td>Klassiek</td>
-            <td>Yamaha</td>
-            <td>&euro;228.19</td>
-            <td>3/5 *</td>
+        <tr>
+            <th>Type</th>
+            <th>Merk</th>
+            <th>Prijs</th>
+            <th>Score</th>
+            <th>Verwijder</th>
         </tr>
-        <tr class="row2">
-            <td>Elektrisch</td>
-            <td>Fender</td>
-            <td>&euro;425.60</td>
-            <td>4/5 *</td>
+        <%
+            for (Gitaar gitaar : gitaarlijst) {
+        %>
+        <tr>
+            <td><%=gitaar.getType()%></td>
+            <td><%=gitaar.getMerk()%></td>
+            <td><%=gitaar.getPrijs()%></td>
+            <td><%=gitaar.getScore()%></td>
+            <td>
+                <a href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>">Remove</a>
+            </td>
         </tr>
-        <tr class="row3">
-            <td>Ukelele</td>
-            <td>Epiphone</td>
-            <td>&euro;90.50</td>
-            <td>2/5 *</td>
-        </tr>
+        <%
+            }
+        %>
     </table>
 </main>
 

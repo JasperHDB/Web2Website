@@ -16,25 +16,24 @@
 <header>
     <nav>
         <ul>
-            <li class="actief"><a href="index.jsp">Home</a></li>
+            <li><a href="index.jsp">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
-            <li><a href="overzicht.jsp">Overzicht</a></li>
+            <li class="actief"><a href="overzicht.jsp">Overzicht</a></li>
             <li><a href="zoekGitaar.jsp">Zoek</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <h1>
-        Gitaar Keuzelijst
+    <h1 style="text-align: center">
+        Wil je deze gitaar verwijderen van de lijst?
     </h1>
-
-    <p>
-        Op deze pagina staat een keuzelijst van gitaren <br>
-        waarvan ik er een van ga kopen. Ik kan ze dan makkelijk <br>
-        vergelijken met hun voor- en nadelen, en dan zo<br>
-        de perfecte gitaar kopen.
-    </p>
+    <div class="container" style="text-align: center">
+        <p><%= request.getParameter("typenaam") %> van het merk <%= request.getParameter("merknaam")%></p>
+        <form action="Controller?command=delete&typenaam=<%= request.getParameter("typenaam") %>" method="POST">
+            <input type="submit" value="Confirm"/>
+        </form>
+    </div>
 </main>
 
 <footer>
