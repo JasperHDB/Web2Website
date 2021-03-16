@@ -1,7 +1,11 @@
 <%@ page import="domain.model.Gitaar" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="domain.db.GitaarDB" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%ArrayList<Gitaar> gitaarlijst = (ArrayList<Gitaar>) request.getAttribute("gitaren");%>
+<%
+    GitaarDB db = (GitaarDB) request.getAttribute("db");
+    ArrayList<Gitaar> gitaarLijst = db.getGitaarList();
+%>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -41,12 +45,12 @@
             <th>Verwijder</th>
         </tr>
         <%
-            for (Gitaar gitaar : gitaarlijst) {
+            for (Gitaar gitaar : gitaarLijst) {
         %>
         <tr>
             <td><%=gitaar.getType()%></td>
             <td><%=gitaar.getMerk()%></td>
-            <td><%=gitaar.getPrijs()%></td>
+            <td>&euro;<%=gitaar.getPrijs()%></td>
             <td><%=gitaar.getScore()%></td>
             <td>
                 <a href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>">Remove</a>

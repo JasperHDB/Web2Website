@@ -4,18 +4,23 @@ import domain.db.GitaarDB;
 import domain.model.Gitaar;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "Controller", value = "/Controller")
 public class Controller extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     private GitaarDB db = new GitaarDB();
 
     public Controller() {
         super();
+    }
+
+    public void init() throws ServletException {
+        super.init();
         Gitaar a = new Gitaar("Klassiek", "Fender", 299.99, 3);
         Gitaar b = new Gitaar("Akoestisch", "Epiphone", 228.19, 3);
         Gitaar c = new Gitaar("Elektrisch", "Gibson", 90.50, 2);
@@ -25,18 +30,14 @@ public class Controller extends HttpServlet {
         db.addGuitar(c);
     }
 
-    public void init() {
-
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request,response);
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request,response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,7 +54,7 @@ public class Controller extends HttpServlet {
                 destination = overzicht(request, response);
                 break;
             case "deleteConfirmation":
-                destination = getDeleteConfirmation();
+                destination = deleteConfirm(request,response);
                 break;
             case "voegtoe":
                 destination = voegToe(request, response);
@@ -64,27 +65,22 @@ public class Controller extends HttpServlet {
             case "delete":
                 destination = delete(request, response);
                 break;
-            default:
-                destination = index(request, response);
+            default :
+                destination = index(request,response);
         }
 
-        request.getRequestDispatcher(destination).forward(request, response);
+        request.getRequestDispatcher(destination).forward(request,response);
     }
 
     private String index(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("pricedGuitar", db.getPricedGuitar().getType());
+        request.setAttribute("db", db);
         return "index.jsp";
     }
 
-    private String overzicht (HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("Gitaren", db.getGitaarList());
-        return "overzicht.jsp";
-    }
-
     private String voegToe (HttpServletRequest request, HttpServletResponse response) {
-        String type = request.getParameter("type-naam");
-        String merk  = request.getParameter("merk-naam");
-        double prijs = 2; /*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH*/
+        String type = request.getParameter("typenaam");
+        String merk  = request.getParameter("merknaam");
+        double prijs = Double.parseDouble(request.getParameter("prijs"));
         int score = Integer.parseInt(request.getParameter("score"));
 
         if (!type.trim().isEmpty() && !merk.trim().isEmpty() && prijs > 0) {
@@ -98,27 +94,28 @@ public class Controller extends HttpServlet {
     }
 
     private String search(HttpServletRequest request, HttpServletResponse response) {
-        String type = request.getParameter("type-name");
-        String merk = request.getParameter("merk-name");
+        String type = request.getParameter("typenaam");
+        String merk = request.getParameter("merknaam");
         Gitaar gitaar = db.getGitaar(type, merk);
 
         if (gitaar == null) {
             request.setAttribute("message", "Deze gitaar zit niet in de lijst");
             return "zoekGitaar.jsp";
         } else {
-            return overzicht(request, response, gitaar);
+            return overzicht(request, response);
         }
     }
 
-    private String overzicht (HttpServletRequest request, HttpServletResponse response, Gitaar gitaar) {
-        ArrayList<Gitaar> gitaren = new ArrayList<>();
-        gitaren.add(gitaar);
-        request.setAttribute("gitaren", gitaren);
+    private String overzicht (HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("db",db);
         return "overzicht.jsp";
     }
 
-    private String getDeleteConfirmation() {
-        return "deleteConfirmation.jsp";
+    private String deleteConfirm(HttpServletRequest request, HttpServletResponse response){
+        String type = request.getParameter("type");
+        String merk = request.getParameter("merk");
+        request.setAttribute("Print", db.getGitaar(type, merk));
+        return "deleteConfirm.jsp";
     }
 
     private String delete (HttpServletRequest request, HttpServletResponse response) {

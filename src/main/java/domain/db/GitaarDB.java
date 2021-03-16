@@ -14,6 +14,15 @@ public class GitaarDB {
         gitaarList.add(gitaar);
     }
 
+    public Gitaar getGitaar(String type, String merk) {
+        for (Gitaar gitaar : gitaarList) {
+            if (gitaar.getType().equalsIgnoreCase(type) && gitaar.getMerk().equalsIgnoreCase(merk))
+                return gitaar;
+        }
+
+        return null;
+    }
+
     public void removeGuitar(String gitaarNaam) {
         boolean hulp = false;
 
@@ -37,15 +46,6 @@ public class GitaarDB {
         }
 
         return pricedGuitar;
-    }
-
-    public Gitaar getGitaar(String type, String merk) {
-        for (Gitaar gitaar : gitaarList) {
-            if (gitaar.getType().equalsIgnoreCase(type) && gitaar.getMerk().equalsIgnoreCase(merk))
-                return gitaar;
-        }
-
-        return null;
     }
 
     public ArrayList<Gitaar> getGitaarList() {

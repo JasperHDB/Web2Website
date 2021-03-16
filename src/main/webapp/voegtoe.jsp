@@ -59,15 +59,15 @@
     <div style="margin-top: 2rem">
         <label for="brand" class="ratingLabel">Rating:</label>
         <form class="rate" action="Controller?command=add" method="POST" novalidate>
-            <input type="radio" id="star5" name="rate" value="5" />
+            <input type="radio" id="star5" name="rate" value="5"/>
             <label for="star5" title="5"></label>
-            <input type="radio" id="star4" name="rate" value="4" />
+            <input type="radio" id="star4" name="rate" value="4"/>
             <label for="star4" title="4"></label>
-            <input type="radio" id="star3" name="rate" value="3" />
+            <input type="radio" id="star3" name="rate" value="3"/>
             <label for="star3" title="3"></label>
-            <input type="radio" id="star2" name="rate" value="2" />
+            <input type="radio" id="star2" name="rate" value="2"/>
             <label for="star2" title="2"></label>
-            <input type="radio" id="star1" name="rate" value="1" />
+            <input type="radio" id="star1" name="rate" value="1"/>
             <label for="star1" title="1"></label>
         </form>
     </div>
