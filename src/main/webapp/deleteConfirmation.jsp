@@ -29,7 +29,7 @@
         Wil je deze gitaar verwijderen van de lijst?
     </h1>
     <div class="container" style="text-align: center">
-        <p><%= request.getParameter("typenaam") %> van het merk <%= request.getParameter("merknaam")%></p>
+        <p><%= request.getParameter("typenaam") %>e gitaar van het merk <%= request.getParameter("merknaam")%></p>
         <form action="Controller?command=delete&typenaam=<%= request.getParameter("typenaam") %>" method="POST">
             <input type="submit" value="Confirm"/>
         </form>

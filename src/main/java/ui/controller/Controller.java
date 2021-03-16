@@ -54,7 +54,7 @@ public class Controller extends HttpServlet {
                 destination = overzicht(request, response);
                 break;
             case "deleteConfirmation":
-                destination = deleteConfirm(request,response);
+                destination = deleteConfirmation(request,response);
                 break;
             case "voegtoe":
                 destination = voegToe(request, response);
@@ -111,11 +111,11 @@ public class Controller extends HttpServlet {
         return "overzicht.jsp";
     }
 
-    private String deleteConfirm(HttpServletRequest request, HttpServletResponse response){
+    private String deleteConfirmation(HttpServletRequest request, HttpServletResponse response){
         String type = request.getParameter("type");
         String merk = request.getParameter("merk");
         request.setAttribute("Print", db.getGitaar(type, merk));
-        return "deleteConfirm.jsp";
+        return "deleteConfirmation.jsp";
     }
 
     private String delete (HttpServletRequest request, HttpServletResponse response) {
