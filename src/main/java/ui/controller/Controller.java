@@ -57,7 +57,7 @@ public class Controller extends HttpServlet {
                 destination = deleteConfirmation(request,response);
                 break;
             case "voegtoe":
-                destination = voegToe(request, response);
+                destination = voegtoe(request, response);
                 break;
             case "search":
                 destination = search(request, response);
@@ -77,13 +77,15 @@ public class Controller extends HttpServlet {
         return "index.jsp";
     }
 
-    private String voegToe (HttpServletRequest request, HttpServletResponse response) {
+    private String voegtoe (HttpServletRequest request, HttpServletResponse response) {
         String type = request.getParameter("typenaam");
         String merk  = request.getParameter("merknaam");
+        System.out.println(request.getParameter("prijs"));
         double prijs = Double.parseDouble(request.getParameter("prijs"));
+        System.out.println(request.getParameter("score"));
         int score = Integer.parseInt(request.getParameter("score"));
 
-        if (!type.trim().isEmpty() && !merk.trim().isEmpty() && prijs > 0) {
+        if (!type.isEmpty() && !merk.isEmpty() && prijs > 0) {
             Gitaar gitaar = new Gitaar(type, merk, prijs, score);
             db.addGuitar(gitaar);
             return overzicht(request, response);

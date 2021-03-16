@@ -16,15 +16,15 @@ body {
 
 h1 {
     font-size: 35px;
-    padding-left: 20px;
-    padding-top: 20px;
+    padding-left: 6rem;
+    padding-top: 3rem;
 }
 
 p {
     padding-bottom: 15px;
     padding-left: 30px;
     margin-top: 10px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 
@@ -72,15 +72,39 @@ nav ul a {
 /* Form */
 
 form {
-    margin-left: 3rem;
-    margin-top: 2rem;
+    margin-left: 6rem;
+    margin-top: 3rem;
+}
+
+label {
+    font-size: 20px;
+}
+
+.field {
+    margin-bottom: 2rem;
 }
 
 .submit {
+    float: left;
+    display: block;
     padding: 3px;
-    margin-top: 2rem;
-    margin-left: 3rem;
-    font-size: large;
+    margin-top: 1rem;
+    margin-left: 30rem;
+    font-size: 20px;
+}
+
+#cancelbutton {
+    margin-left: 4rem;
+    text-align: center;
+}
+
+#cancelh1 {
+    padding-left: 0;
+}
+
+#cancelp {
+    padding-left: 0;
+    text-align: center
 }
 
 
@@ -107,56 +131,6 @@ tr {
     border-color: black;
 }
 
-
-/* STER TEST */
-
-.rate {
-    height: 46px;
-    padding: 0 10px;
-    width: 180px;
-    margin-top: 0;
-}
-
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-
-.rate:not(:checked) > label:before {
-    content: "\2605";
-}
-
-.rate > input:checked ~ label {
-    color: #ffc700;
-}
-
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;
-}
-
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
-
-.ratingLabel {
-    margin-left: 3rem;
-    height: 10px;
-}
 
 /* Footer */
 

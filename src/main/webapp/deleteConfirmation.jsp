@@ -25,13 +25,15 @@
 </header>
 
 <main>
-    <h1 style="text-align: center">
-        Wil je deze gitaar verwijderen van de lijst?
+    <h1 id="cancelh1" style="text-align: center">Wil je deze gitaar verwijderen van de lijst?
     </h1>
-    <div class="container" style="text-align: center">
-        <p><%=request.getParameter("typenaam")%>e gitaar van het merk <%=request.getParameter("merknaam")%></p>
+    <div class="container">
+        <p id="cancelp"><%=request.getParameter("typenaam")%>e gitaar van het merk <%=request.getParameter("merknaam")%></p>
         <form action="Controller?command=delete&typenaam=<%= request.getParameter("typenaam") %>" method="POST">
-            <input type="submit" value="Confirm"/>
+            <div id="cancelbutton">
+                <input class="submit" type="submit" value="Confirm"/>
+                <input class="submit" type="submit" value="Cancel" formaction="Controller?command=overzicht"/>
+            </div>
         </form>
     </div>
 </main>

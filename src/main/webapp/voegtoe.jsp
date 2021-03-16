@@ -29,50 +29,36 @@
         Voeg een gitaar toe
     </h1>
 
-    <form action="Controller?command=add" method="POST" novalidate>
-        <label for="type">Type gitaar:</label>
-        <select name="test" id="type">
-            <option value="elek">Elektrische gitaar</option>
-            <option value="klass">Klassieke gitaar</option>
-            <option value="akoe">Akoestische gitaar</option>
-        </select>
+    <form action="Controller?command=voegtoe" method="POST" novalidate>
+        <div class="field">
+            <label for="type">Type gitaar:</label>
+            <select name="test" id="type">
+                <option value="elek">Elektrische gitaar</option>
+                <option value="klass">Klassieke gitaar</option>
+                <option value="akoe">Akoestische gitaar</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="brand">Merk gitaar:</label>
+            <select name="test" id="brand">
+                <option value="fen">Fender</option>
+                <option value="gib">Gibson</option>
+                <option value="gnl">G&L</option>
+                <option value="ric">Rickenbacker</option>
+                <option value="jac">Jackson</option>
+                <option value="epi">Epiphone</option>
+                <option value="iba">Ibanez</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="prijs">Prijs: &euro;</label>
+            <input type="number" id="prijs" name="prijs" min="0" step="0.01">
+        </div>
+        <div class="score">
+            <input type="range" name="score" id="score" min="0" max="5" step="1" value="0">
+        </div>
+        <button class="submit" type="submit">Submit</button>
     </form>
-
-    <form action="Controller?command=add" method="POST" novalidate>
-        <label for="brand">Merk gitaar:</label>
-        <select name="test" id="brand">
-            <option value="fen">Fender</option>
-            <option value="gib">Gibson</option>
-            <option value="gnl">G&L</option>
-            <option value="ric">Rickenbacker</option>
-            <option value="jac">Jackson</option>
-            <option value="epi">Epiphone</option>
-            <option value="iba">Ibanez</option>
-        </select>
-    </form>
-
-    <form action="Controller?command=add" method="POST" novalidate>
-        <label for="price">Prijs: &euro;</label>
-        <input type="number" id="price" name="price" min="0" step="0.01">
-    </form>
-
-    <div style="margin-top: 2rem">
-        <label for="brand" class="ratingLabel">Rating:</label>
-        <form class="rate" action="Controller?command=add" method="POST" novalidate>
-            <input type="radio" id="star5" name="rate" value="5"/>
-            <label for="star5" title="5"></label>
-            <input type="radio" id="star4" name="rate" value="4"/>
-            <label for="star4" title="4"></label>
-            <input type="radio" id="star3" name="rate" value="3"/>
-            <label for="star3" title="3"></label>
-            <input type="radio" id="star2" name="rate" value="2"/>
-            <label for="star2" title="2"></label>
-            <input type="radio" id="star1" name="rate" value="1"/>
-            <label for="star1" title="1"></label>
-        </form>
-    </div>
-
-    <input class="submit" type="submit" value="Submit">
 </main>
 
 <footer>
