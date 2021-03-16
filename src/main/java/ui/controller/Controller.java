@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 @WebServlet(name = "Controller", value = "/Controller")
 public class Controller extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private GitaarDB db = new GitaarDB();
 
     public Controller() {
@@ -28,10 +29,12 @@ public class Controller extends HttpServlet {
 
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -110,8 +113,8 @@ public class Controller extends HttpServlet {
     private String overzicht (HttpServletRequest request, HttpServletResponse response, Gitaar gitaar) {
         ArrayList<Gitaar> gitaren = new ArrayList<>();
         gitaren.add(gitaar);
-        request.setAttribute("tracks", gitaren);
-        return "playlist.jsp";
+        request.setAttribute("gitaren", gitaren);
+        return "overzicht.jsp";
     }
 
     private String getDeleteConfirmation() {
@@ -119,8 +122,8 @@ public class Controller extends HttpServlet {
     }
 
     private String delete (HttpServletRequest request, HttpServletResponse response) {
-        String trackName = request.getParameter("track-name");
-        db.removeGuitar(trackName);
+        String typenaam = request.getParameter("typenaam");
+        db.removeGuitar(typenaam);
         return overzicht(request, response);
     }
 }

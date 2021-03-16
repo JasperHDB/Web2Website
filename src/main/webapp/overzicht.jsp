@@ -19,9 +19,9 @@
 <header>
     <nav>
         <ul>
-            <li><a href="index.jsp">Home</a></li>
+            <li><a href="Controller?command=home">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
-            <li class="actief"><a href="overzicht.jsp">Overzicht</a></li>
+            <li class="actief"><a href="Controller?command=overzicht">Overzicht</a></li>
             <li><a href="zoekGitaar.jsp">Zoek</a></li>
         </ul>
     </nav>
