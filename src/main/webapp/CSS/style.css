@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
     font-family: 'Nunito', sans-serif;
     line-height: 1.5;
@@ -157,10 +161,14 @@ tr {
 /* Footer */
 
 footer {
-    position: fixed;
+    position: absolute;
     color: white;
     background: #1a1a1a;
     text-align: center;
     padding-top: 1em;
     padding-bottom: 1em;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
 }

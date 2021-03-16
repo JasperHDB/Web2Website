@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -27,7 +28,7 @@
         Voeg een gitaar toe
     </h1>
 
-    <form>
+    <form action="Controller?command=add" method="POST" novalidate>
         <label for="type">Type gitaar:</label>
         <select name="test" id="type">
             <option value="elek">Elektrische gitaar</option>
@@ -36,7 +37,7 @@
         </select>
     </form>
 
-    <form>
+    <form action="Controller?command=add" method="POST" novalidate>
         <label for="brand">Merk gitaar:</label>
         <select name="test" id="brand">
             <option value="fen">Fender</option>
@@ -49,14 +50,14 @@
         </select>
     </form>
 
-    <form>
+    <form action="Controller?command=add" method="POST" novalidate>
         <label for="price">Prijs: &euro;</label>
         <input type="number" id="price" name="price" min="0" step="0.01">
     </form>
 
     <div style="margin-top: 2rem">
         <label for="brand" class="ratingLabel">Rating:</label>
-        <form class="rate">
+        <form class="rate" action="Controller?command=add" method="POST" novalidate>
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="5"></label>
             <input type="radio" id="star4" name="rate" value="4" />

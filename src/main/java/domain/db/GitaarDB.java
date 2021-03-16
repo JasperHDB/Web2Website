@@ -15,15 +15,40 @@ public class GitaarDB {
     }
 
     public void removeGuitar(String gitaarNaam) {
-        boolean ok = false;
+        boolean hulp = false;
 
-        for (int i = 0; i != gitaarList.size() && !ok ; i++) {
+        for (int i = 0; i != gitaarList.size() && !hulp ; i++) {
             if (gitaarList.get(i).getType().equalsIgnoreCase(gitaarNaam)) {
                 gitaarList.remove(gitaarList.get(i));
-                ok = true;
+                hulp = true;
             }
         }
 
-        if (!ok) throw new IllegalArgumentException("Er is geen gitaar met deze naam");
+        if (!hulp) throw new IllegalArgumentException("Er is geen gitaar met deze naam");
+    }
+
+    public Gitaar getPricedGuitar() {
+        Gitaar pricedGuitar = new Gitaar(0);
+
+        for (Gitaar gitaar : gitaarList) {
+            if (gitaar.getPrijs() > pricedGuitar.getPrijs()) {
+                pricedGuitar = gitaar;
+            }
+        }
+
+        return pricedGuitar;
+    }
+
+    public Gitaar getTrack(String type, String merk) {
+        for (Gitaar track : gitaarList) {
+            if (track.getType().equalsIgnoreCase(type) && track.getMerk().equalsIgnoreCase(merk))
+                return track;
+        }
+
+        return null;
+    }
+
+    public ArrayList<Gitaar> getTrackList() {
+        return gitaarList;
     }
 }

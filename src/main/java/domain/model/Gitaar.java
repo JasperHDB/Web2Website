@@ -6,6 +6,10 @@ public class Gitaar {
     private double prijs;
     private int score;
 
+    public Gitaar(double prijs) {
+        this("placeholder", "placeholder", 0, 0);
+    }
+
     public Gitaar(String t, String m, double p, int s) {
         this.setType(t);
         this.setMerk(m);
@@ -14,16 +18,17 @@ public class Gitaar {
     }
 
     public void setType(String t) {
-        if(t == null) throw new IllegalArgumentException("Type kan niet leeg zijn");
+        if(t.trim().isEmpty()) throw new IllegalArgumentException("Type kan niet leeg zijn");
         this.type = t;
     }
 
     public void setMerk(String m) {
-        if(m == null) throw new IllegalArgumentException("Merk kan niet leeg zijn");
+        if(m.trim().isEmpty()) throw new IllegalArgumentException("Merk kan niet leeg zijn");
         this.merk = m;
     }
 
     public void setPrijs(double p) {
+        if (p < 0) throw new IllegalArgumentException("Prijs kan niet negatief zijn");
         this.prijs = p;
     }
 
