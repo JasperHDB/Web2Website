@@ -74,17 +74,14 @@ public class Controller extends HttpServlet {
 
     private String index(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("db", db);
+        request.setAttribute("gitaar", db.getPricedGuitar());
         return "index.jsp";
     }
 
     private String voegtoe (HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getParameter("typenaam"));
         String type = request.getParameter("typenaam");
-        System.out.println(request.getParameter("merknaam"));
         String merk  = request.getParameter("merknaam");
-        System.out.println(request.getParameter("prijs"));
         double prijs = Double.parseDouble(request.getParameter("prijs"));
-        System.out.println(request.getParameter("score"));
         int score = Integer.parseInt(request.getParameter("score"));
 
         if (!type.isEmpty() && !merk.isEmpty() && prijs > 0) {
@@ -106,7 +103,7 @@ public class Controller extends HttpServlet {
             request.setAttribute("message", "Deze gitaar zit niet in de lijst");
             return "zoekGitaar.jsp";
         } else {
-            return overzicht(request, response);
+            return "zoekGitaar.jsp";
         }
     }
 
@@ -118,7 +115,7 @@ public class Controller extends HttpServlet {
     private String deleteConfirmation(HttpServletRequest request, HttpServletResponse response) {
         String type = request.getParameter("typenaam");
         String merk = request.getParameter("merknaam");
-        request.setAttribute("Print", db.getGitaar(type, merk));
+        request.setAttribute("Gitaar", db.getGitaar(type, merk));
         return "deleteConfirmation.jsp";
     }
 

@@ -23,7 +23,7 @@ h1 {
 p {
     padding-bottom: 15px;
     padding-left: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 1.5rem;
 }
 
@@ -54,7 +54,7 @@ li a:hover {
 }
 
 li.actief a {
-    color: black;
+    color: #000000;
     text-decoration: underline;
 }
 
@@ -100,6 +100,7 @@ label {
 
 #cancelh1 {
     padding-left: 0;
+    text-align: center
 }
 
 #cancelp {
@@ -109,10 +110,17 @@ label {
 
 .zoekForm {
     margin-top: 1rem;
+    text-align: center
 }
 
 #zoekSubmit {
 
+}
+
+.stars {
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 2rem;
 }
 
 

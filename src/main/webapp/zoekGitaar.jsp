@@ -1,3 +1,6 @@
+<%@ page import="domain.model.Gitaar" %>
+<%@ page import="domain.db.GitaarDB" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -16,7 +19,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="index.jsp">Home</a></li>
+            <li><a href="Controller?command=index">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
             <li><a href="Controller?command=overzicht">Overzicht</a></li>
             <li class="actief"><a href="zoekGitaar.jsp">Zoek</a></li>
@@ -25,34 +28,68 @@
 </header>
 
 <main>
-    <h1 style="text-align: center">
+    <h1 id="cancelh1">
         Zoek een gitaar op:
     </h1>
-    <div class="container" style="text-align: center">
-        <form class="zoekForm" action="Controller?command=search" method="POST" novalidate>
+    <form class="zoekForm" action="Controller?command=search" method="POST" novalidate>
+        <div class="field">
             <!-- Zoek op type van gitaar -->
             <label for="typenaam">Type gitaar:</label>
             <select name="type" id="typenaam">
-                <option value="elek">Elektrische gitaar</option>
-                <option value="klass">Klassieke gitaar</option>
-                <option value="akoe">Akoestische gitaar</option>
+                <option value="Elektrisch">Elektrische gitaar</option>
+                <option value="Klassiek">Klassieke gitaar</option>
+                <option value="Akoestisch">Akoestische gitaar</option>
             </select>
-        </form>
-        <form class="zoekForm">
+        </div>
+        <div class="field">
             <!-- Zoek op merk van gitaar -->
             <label for="merknaam">Merk gitaar:</label>
             <select name="merk" id="merknaam">
-                <option value="fen">Fender</option>
-                <option value="gib">Gibson</option>
-                <option value="gnl">G&L</option>
-                <option value="ric">Rickenbacker</option>
-                <option value="jac">Jackson</option>
-                <option value="epi">Epiphone</option>
-                <option value="iba">Ibanez</option>
+                <option value="Fender">Fender</option>
+                <option value="Gibson">Gibson</option>
+                <option value="G&L">G&L</option>
+                <option value="Rickenbacker">Rickenbacker</option>
+                <option value="Jackson">Jackson</option>
+                <option value="Epiphone">Epiphone</option>
+                <option value="Ibanez">Ibanez</option>
             </select>
-        </form>
-        <input id="zoekSubmit" type="submit" value="Search">
-    </div>
+        </div>
+        <input id="zoekSubmit" type="submit">
+    </form>
+    <% if ( request.getAttribute("resultaten") != null ) { %>
+    <%  ArrayList<Gitaar> resultaten = (ArrayList<Gitaar>) request.getAttribute("resultaten"); %>
+    <% if ( resultaten.size() != 0 ) { %>
+
+    <table align="center">
+        <thead>
+        <tr>
+            <th>Merk</th>
+            <th>Soort</th>
+            <th>Size</th>
+            <th>Prijs</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% GitaarDB db = (GitaarDB) request.getAttribute("db"); %>
+        <% for (Gitaar gitaar: resultaten) { %>
+        <tr>
+            <td> <%=gitaar.getType() %></td>
+            <td> <%=gitaar.getMerk() %> </td>
+            <td> <%=gitaar.getPrijs() %></td>
+            <td> <%=gitaar.getScore() %> euro</td>
+            <td>
+                <a style="color: red;" href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>&merknaam=<%=gitaar.getMerk()%>">
+                    <i></i> Verwijderen
+                </a>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <p>Zoekopdracht heeft geen resultaten opgeleverd.</p>
+    <% } %>
+    <% } %>
 </main>
 
 <footer>

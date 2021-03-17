@@ -16,7 +16,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="index.jsp">Home</a></li>
+            <li><a href="Controller?command=index">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
             <li class="actief"><a href="Controller?command=overzicht">Overzicht</a></li>
             <li><a href="zoekGitaar.jsp">Zoek</a></li>
@@ -25,14 +25,14 @@
 </header>
 
 <main>
-    <h1 id="cancelh1" style="text-align: center">Wil je deze gitaar verwijderen van de lijst?
+    <h1 id="cancelh1">Wil je deze gitaar verwijderen van de lijst?
     </h1>
     <div class="container">
         <p id="cancelp"><%=request.getParameter("typenaam")%>e gitaar van het merk <%=request.getParameter("merknaam")%></p>
-        <form action="Controller?command=delete&typenaam=<%= request.getParameter("typenaam") %>" method="POST">
-            <div id="cancelbutton">
+        <form action="Controller?command=delete&typenaam=<%=request.getParameter("typenaam")%>" method="POST">
+            <div>
                 <input class="submit" type="submit" value="Confirm"/>
-                <input class="submit" type="submit" value="Cancel" formaction="Controller?command=overzicht"/>
+                <input id="cancelbutton" class="submit" type="submit" value="Cancel" formaction="Controller?command=overzicht"/>
             </div>
         </form>
     </div>

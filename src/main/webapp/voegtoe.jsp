@@ -16,7 +16,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="index.jsp">Home</a></li>
+            <li><a href="Controller?command=index">Home</a></li>
             <li class="actief"><a href="voegtoe.jsp">Voeg toe</a></li>
             <li><a href="Controller?command=overzicht">Overzicht</a></li>
             <li><a href="zoekGitaar.jsp">Zoek</a></li>
@@ -33,21 +33,21 @@
         <div class="field">
             <label for="type">Type gitaar:</label>
             <select name="typenaam" id="type">
-                <option value="elek">Elektrische gitaar</option>
-                <option value="klass">Klassieke gitaar</option>
-                <option value="akoe">Akoestische gitaar</option>
+                <option value="Elektrisch">Elektrische gitaar</option>
+                <option value="Klassiek">Klassieke gitaar</option>
+                <option value="Akoestisch">Akoestische gitaar</option>
             </select>
         </div>
         <div class="field">
             <label for="merk">Merk gitaar:</label>
             <select name="merknaam" id="merk">
-                <option value="fen">Fender</option>
-                <option value="gib">Gibson</option>
-                <option value="gnl">G&L</option>
-                <option value="ric">Rickenbacker</option>
-                <option value="jac">Jackson</option>
-                <option value="epi">Epiphone</option>
-                <option value="iba">Ibanez</option>
+                <option value="Fender">Fender</option>
+                <option value="Gibson">Gibson</option>
+                <option value="G&L">G&L</option>
+                <option value="Rickenbacker">Rickenbacker</option>
+                <option value="Jackson">Jackson</option>
+                <option value="Epiphone">Epiphone</option>
+                <option value="Ibanez">Ibanez</option>
             </select>
         </div>
         <div class="field">
@@ -55,8 +55,11 @@
             <input type="number" id="prijs" name="prijs" min="0" step="0.01">
         </div>
         <div class="score">
+            <div>
+                <p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            </div>
             <label for="score"></label>
-            <input type="range" name="score" id="score" min="0" max="5" step="1" value="0">
+            <input type="range" name="score" id="score" min="1" max="5" step="1" value="0">
         </div>
         <button class="submit" type="submit">Submit</button>
     </form>

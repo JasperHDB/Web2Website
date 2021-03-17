@@ -1,3 +1,5 @@
+<%@ page import="domain.model.Gitaar" %>
+<%@ page import="domain.db.GitaarDB" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -34,6 +36,10 @@
         waarvan ik er een van ga kopen. Ik kan ze dan makkelijk <br>
         vergelijken met hun voor- en nadelen, en dan zo<br>
         de perfecte gitaar kopen.
+    </p>
+    <%Gitaar gitaar = (Gitaar) request.getAttribute("gitaar");%>
+    <p>
+        De duurste gitaar is momenteel de <%=gitaar.getType()%>e gitaar van het merk <%=gitaar.getMerk()%>
     </p>
 </main>
 
