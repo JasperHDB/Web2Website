@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -96,15 +97,12 @@ public class Controller extends HttpServlet {
 
     private String search(HttpServletRequest request, HttpServletResponse response) {
         String type = request.getParameter("typenaam");
+        System.out.println(type);
         String merk = request.getParameter("merknaam");
-        Gitaar gitaar = db.getGitaar(type, merk);
+        System.out.println(merk);
+        request.setAttribute("resultaten", db.searchGuitar(type, merk));
 
-        if (gitaar == null) {
-            request.setAttribute("message", "Deze gitaar zit niet in de lijst");
-            return "zoekGitaar.jsp";
-        } else {
-            return "zoekGitaar.jsp";
-        }
+        return "zoekGitaar.jsp";
     }
 
     private String overzicht (HttpServletRequest request, HttpServletResponse response) {

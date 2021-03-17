@@ -162,3 +162,66 @@ footer {
     width: 100%;
     overflow: hidden;
 }
+
+/* Responsive Webdesign */
+
+@media screen and (min-width: 50px) {
+    nav ul {
+        display: block;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 15px;
+        padding-left: 2rem;
+    }
+
+    form {
+        margin-left: 2rem;
+    }
+
+    .submit {
+        margin-left: 2rem;
+    }
+
+    table {
+        margin-left: 1rem;
+        width: 30rem;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    p {
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 35px;
+        padding-left: 6rem;
+    }
+
+    form {
+        margin-left: 6rem;
+    }
+
+    .submit {
+        margin-left: 30rem;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    table {
+        margin-left: 6rem;
+        width: 40rem;
+    }
+}
+
+@media screen and (min-width: 880px) {
+    nav ul {
+        display: flex;
+    }
+
+}

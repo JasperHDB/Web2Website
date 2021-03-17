@@ -35,8 +35,8 @@
         <div class="field">
             <!-- Zoek op type van gitaar -->
             <label for="typenaam">Type gitaar:</label>
-            <select name="type" id="typenaam">
-                <option value="Elektrisch">Elektrische gitaar</option>
+            <select name="typenaam" id="typenaam">
+                <option selected value="Elektrisch">Elektrische gitaar</option>
                 <option value="Klassiek">Klassieke gitaar</option>
                 <option value="Akoestisch">Akoestische gitaar</option>
             </select>
@@ -44,8 +44,8 @@
         <div class="field">
             <!-- Zoek op merk van gitaar -->
             <label for="merknaam">Merk gitaar:</label>
-            <select name="merk" id="merknaam">
-                <option value="Fender">Fender</option>
+            <select name="merknaam" id="merknaam">
+                <option selected value="Fender">Fender</option>
                 <option value="Gibson">Gibson</option>
                 <option value="G&L">G&L</option>
                 <option value="Rickenbacker">Rickenbacker</option>
@@ -57,30 +57,28 @@
         <input id="zoekSubmit" type="submit">
     </form>
     <% if ( request.getAttribute("resultaten") != null ) { %>
-    <%  ArrayList<Gitaar> resultaten = (ArrayList<Gitaar>) request.getAttribute("resultaten"); %>
+    <% ArrayList<Gitaar> resultaten = (ArrayList<Gitaar>) request.getAttribute("resultaten"); %>
     <% if ( resultaten.size() != 0 ) { %>
 
     <table align="center">
         <thead>
         <tr>
+            <th>Type</th>
             <th>Merk</th>
-            <th>Soort</th>
-            <th>Size</th>
             <th>Prijs</th>
+            <th>Score</th>
         </tr>
         </thead>
         <tbody>
         <% GitaarDB db = (GitaarDB) request.getAttribute("db"); %>
         <% for (Gitaar gitaar: resultaten) { %>
         <tr>
-            <td> <%=gitaar.getType() %></td>
-            <td> <%=gitaar.getMerk() %> </td>
-            <td> <%=gitaar.getPrijs() %></td>
-            <td> <%=gitaar.getScore() %> euro</td>
+            <td><%=gitaar.getType()%></td>
+            <td><%=gitaar.getMerk()%></td>
+            <td>&euro;<%=gitaar.getPrijs()%></td>
+            <td><%=gitaar.getScore()%></td>
             <td>
-                <a style="color: red;" href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>&merknaam=<%=gitaar.getMerk()%>">
-                    <i></i> Verwijderen
-                </a>
+                <a style="color: red;" href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>&merknaam=<%=gitaar.getMerk()%>">Remove</a>
             </td>
         </tr>
         <% } %>

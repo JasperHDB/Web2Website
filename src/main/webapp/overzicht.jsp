@@ -37,6 +37,7 @@
     </h1>
 
     <table>
+        <thead>
         <tr>
             <th>Type</th>
             <th>Merk</th>
@@ -44,6 +45,7 @@
             <th>Score</th>
             <th>Verwijder</th>
         </tr>
+        </thead>
         <%for (Gitaar gitaar : gitaarLijst) {%>
         <tr>
             <td><%=gitaar.getType()%></td>
