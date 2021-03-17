@@ -53,7 +53,7 @@
             <td>&euro;<%=gitaar.getPrijs()%></td>
             <td><%=gitaar.getScore()%>/5</td>
             <td>
-                <a href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>&merknaam=<%=gitaar.getMerk()%>">Remove</a>
+                <a class="removeKnop" href="Controller?command=deleteConfirmation&typenaam=<%=gitaar.getType()%>&merknaam=<%=gitaar.getMerk()%>">Remove</a>
             </td>
         </tr>
         <%}%>

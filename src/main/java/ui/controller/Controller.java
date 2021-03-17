@@ -97,9 +97,7 @@ public class Controller extends HttpServlet {
 
     private String search(HttpServletRequest request, HttpServletResponse response) {
         String type = request.getParameter("typenaam");
-        System.out.println(type);
         String merk = request.getParameter("merknaam");
-        System.out.println(merk);
         request.setAttribute("resultaten", db.searchGuitar(type, merk));
 
         return "zoekGitaar.jsp";

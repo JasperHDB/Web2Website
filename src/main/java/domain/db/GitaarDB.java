@@ -53,14 +53,14 @@ public class GitaarDB {
         return gitaarList;
     }
 
-    public ArrayList<Gitaar> searchGuitar(String merk, String type) {
+    public ArrayList<Gitaar> searchGuitar(String type, String merk) {
         ArrayList<Gitaar> gevonden_gitaren = new ArrayList<>();
         for (Gitaar _gitaar: this.getGitaarList()) {
-            if (_gitaar.getMerk().equals(".*" + merk + ".*")) gevonden_gitaren.add(_gitaar);
-            else if (_gitaar.getType().equals(".*" + type + ".*")) gevonden_gitaren.add(_gitaar);
+            if (_gitaar.getMerk().equals(merk)) gevonden_gitaren.add(_gitaar);
+            else if (_gitaar.getType().equals(type)) gevonden_gitaren.add(_gitaar);
         }
         System.out.println("Gitaar lijst: " + getGitaarList());
-        System.out.println("Gevonden gitaar: " + gevonden_gitaren);
+        System.out.println("Gevonden gitaren: " + gevonden_gitaren);
         return gevonden_gitaren;
     }
 }

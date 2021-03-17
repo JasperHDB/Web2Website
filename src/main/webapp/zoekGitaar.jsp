@@ -67,6 +67,7 @@
             <th>Merk</th>
             <th>Prijs</th>
             <th>Score</th>
+            <th>Verwijder</th>
         </tr>
         </thead>
         <tbody>
